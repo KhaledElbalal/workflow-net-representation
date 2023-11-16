@@ -1,0 +1,3 @@
+/Users/khaled/Documents/PetriNets/cmake-build-debug/CMakeFiles/PetriNets.dir
+/Users/khaled/Documents/PetriNets/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/khaled/Documents/PetriNets/cmake-build-debug/CMakeFiles/rebuild_cache.dir

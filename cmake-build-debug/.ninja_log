@@ -1,0 +1,19 @@
+# ninja log v5
+0	3295	1700166626559271139	CMakeFiles/PetriNets.dir/src/Petrinet.cpp.o	5dae8257abb28fe0
+3	4671	1700166627942131534	CMakeFiles/PetriNets.dir/src/Utility.cpp.o	8ca30699057f40bb
+3	4987	1700166628259551205	CMakeFiles/PetriNets.dir/src/main.cpp.o	417262e14fe7f925
+2	2495	1700166782790234035	CMakeFiles/PetriNets.dir/src/Petrinet.cpp.o	5dae8257abb28fe0
+2	1706	1700166805755297295	CMakeFiles/PetriNets.dir/src/Petrinet.cpp.o	5dae8257abb28fe0
+2	3437	1700166807493155432	CMakeFiles/PetriNets.dir/src/Utility.cpp.o	8ca30699057f40bb
+1	3817	1700166807873137976	CMakeFiles/PetriNets.dir/src/main.cpp.o	417262e14fe7f925
+1	2327	1700166870316624468	CMakeFiles/PetriNets.dir/src/main.cpp.o	417262e14fe7f925
+2	1113	1700166903321627241	CMakeFiles/PetriNets.dir/src/Petrinet.cpp.o	5dae8257abb28fe0
+2	2099	1700166904306250639	CMakeFiles/PetriNets.dir/src/Utility.cpp.o	8ca30699057f40bb
+1	1179	1700166933465387541	CMakeFiles/PetriNets.dir/src/Petrinet.cpp.o	5dae8257abb28fe0
+0	1200	1700166933488357470	CMakeFiles/PetriNets.dir/src/main.cpp.o	417262e14fe7f925
+1	2038	1700166934325002044	CMakeFiles/PetriNets.dir/src/Utility.cpp.o	8ca30699057f40bb
+2	2650	1700167098473633988	CMakeFiles/PetriNets.dir/src/Petrinet.cpp.o	5dae8257abb28fe0
+1	2691	1700167098518221693	CMakeFiles/PetriNets.dir/src/main.cpp.o	417262e14fe7f925
+2	4161	1700167099987620140	CMakeFiles/PetriNets.dir/src/Utility.cpp.o	8ca30699057f40bb
+3	1201	1700167187481537016	CMakeFiles/PetriNets.dir/src/Petrinet.cpp.o	5dae8257abb28fe0
+1	2492	1700167223220183033	CMakeFiles/PetriNets.dir/src/main.cpp.o	417262e14fe7f925
