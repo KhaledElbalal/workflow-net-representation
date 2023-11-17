@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
-#include "./petrinet.cpp"
-#include "./utility.cpp"
+#include "../include/utility.h"
 
 int main()
 {

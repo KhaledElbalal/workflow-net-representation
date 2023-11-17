@@ -10,8 +10,7 @@
 #include <cmath>
 #include <iostream>
 
-
-Transitions latestFiredTransitions;
+ Transitions latestFiredTransitions;
 
 
 /// @brief Converts a positive integer to its ordinal form.

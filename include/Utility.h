@@ -17,8 +17,6 @@ bool isSound(const PetriNet &net);
 std::string markingToString(const Places &places);
 void drawReachabilityGraphToSVG(const PetriNet &net, const std::string &filename);
 
-
-// Bad practice but it works :)
 extern Transitions latestFiredTransitions;
 
 #endif //PETRINETS_UTILITY_H
