@@ -5,7 +5,7 @@ PetriNet::PetriNet() = default;
 /// @brief Adds a place to the Petri net.
 /// @param place Place to add.
 /// @return (Bool) True if the place was added, false if the place already exists.
-bool PetriNet::addPlace(Place &place) {
+bool PetriNet::addPlace(Place place) {
     if (placeMap.find(place.name) != placeMap.end()) {
         return false;
     }
@@ -115,4 +115,28 @@ void PetriNet::addToken(const int tokenId)  {
 
 void PetriNet::consumeToken(const int tokenId) {
     PetriNet::places[tokenId].tokens--;
+}
+
+std::string PetriNet::toString() const {
+    std::string result;
+    result += "Places: ";
+    result += "\nMarking: ";
+    for (const auto &place : places) {
+        result += place.name + " = " + std::to_string(place.tokens) + " ";
+    }
+    result += "\nTransitions: ";
+    for (const auto &transition : transitions) {
+        result += transition.name + " ";
+    }
+    result += "\nArcs: ";
+    for (const auto &arc : arcs) {
+        result += "{";
+        if (arc.direction == ArcDirection::PlaceToTransition) {
+            result += places[arc.from].name + " -> " + transitions[arc.to].name;
+        } else {
+            result += transitions[arc.from].name + " -> " + places[arc.to].name;
+        }
+        result += "} ";
+    }
+    return result;
 }

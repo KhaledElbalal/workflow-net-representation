@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 #include "../include/utility.h"
-
+#include "../include/Httplib.h"
+#include "../include/Json.h"
+/*
 int main()
 {
     bool choice;
@@ -163,4 +165,66 @@ int main()
     std::cin.get();
     std::cout << "Thanks for using the program :)" << std::endl;
     return 0;
+}*/
+
+using json = nlohmann::json;
+
+PetriNet parseJSON(const std::string& req) {
+    json j = json::parse(req);
+    PetriNet petriNet;
+    for(int i = 0; i < j["places"].size(); i++) {
+        std::string marking = j["places"][i];
+        std::string name = std::to_string(i+1);
+        if(i + 1 == j["inputPlace"])
+            name = "i";
+        else if(i + 1 == j["outputPlace"])
+            name = "o";
+        petriNet.addPlace(Place(name, stoi(marking)));
+    }
+    for(const auto& transition : j["transitions"]) {
+        std::string name = transition;
+        std::cout << "Transition: " << name << std::endl;
+        petriNet.addTransition(Transition(name));
+    }
+    for(const auto& arc : j["arcs"]) {
+        std::string place = arc["place"];
+        std::string transition = arc["transition"];
+        std::string direction = arc["direction"];
+        std::cout << "Arc: " << place << " " << transition << " " << direction << std::endl;
+        if(direction == "Place to Transition") {
+            petriNet.addArc(petriNet.getPlaces()[stoi(place)-1], petriNet.getTransitions()[petriNet.getTransitionMap().at(transition)]);
+        } else {
+            petriNet.addArc(petriNet.getTransitions()[petriNet.getTransitionMap().at(transition)], petriNet.getPlaces()[stoi(place)-1]);
+        }
+    }
+    return petriNet;
+}
+
+int main() {
+    httplib::Server svr;
+
+    svr.Post("/", [](const httplib::Request &req, httplib::Response &res) {
+        std::string js = req.body;
+        PetriNet petriNet = parseJSON(js);
+        std::cout << (petriNet.toString()) << std::endl;
+        isWorkflowNet(petriNet);
+        bool soundness = isSound(petriNet);
+        std::cout << "Soundness: " << std::boolalpha << soundness << std::endl;
+        res.set_header("Access-Control-Allow-Origin", "*");
+        res.set_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+        res.set_header("Access-Control-Allow-Headers", "Content-Type");
+        res.set_header("Access-Control-Allow-Credentials", "true");
+        json j;
+        j["soundness"] = soundness;
+        j["workflowNet"] = isWorkflowNet(petriNet);
+        res.set_content(j.dump(), "application/json");
+    });
+
+    svr.Options("/", [](const httplib::Request&, httplib::Response& res) {
+        res.status = 200;
+    });
+
+    svr.listen("localhost", 5200);
+    return 0;
+
 }

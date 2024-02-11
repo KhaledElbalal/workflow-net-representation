@@ -9,4 +9,6 @@ add_executable(PetriNets src/main.cpp
         include/Constants.h
         include/Types.h
         src/Utility.cpp
-        include/Utility.h)
+        include/Utility.h
+        include/Httplib.h
+        include/Json.h)

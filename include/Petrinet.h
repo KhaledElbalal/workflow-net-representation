@@ -1,13 +1,12 @@
 #ifndef PETRINETS_PETRINET_H
 #define PETRINETS_PETRINET_H
 
-#include "types.h"
+#include "Types.h"
 
 class PetriNet {
 public:
     PetriNet(); // Constructor declaration
-
-    bool addPlace(Place &place);
+    bool addPlace(Place place);
     bool addTransition(const Transition &transition);
     bool addArc(const Place &place, const Transition &transition);
     bool addArc(const Transition &transition, const Place &place);
@@ -42,6 +41,8 @@ public:
     void consumeToken(int);
 
     void addToken(int);
+
+    std::string toString() const;
 
 private:
     Transitions transitions;
